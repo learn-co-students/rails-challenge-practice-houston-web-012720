@@ -1,0 +1,14 @@
+<h1><%= @company.name%></h1>
+<label>Offices:</label>
+<li>
+<% @offices.select do |office| %>
+<%= office.company == @company.name%>
+<%end%>
+</li>
+
+
+<li>
+<% @employees.select do |employee| %>
+<%= employee.company == @company.name %>
+<%end%>
+</li>
