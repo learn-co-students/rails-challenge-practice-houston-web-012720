@@ -1,14 +1,24 @@
 <h1><%= @company.name%></h1>
-<label>Offices:</label>
-<li>
-<% @offices.select do |office| %>
-<%= office.company == @company.name%>
+<br>
+<label>Office Addresses:</label>
+<% @company.offices.each do |office| %>
+<li><%= office.building.address %>, <%= office.building%></li>
 <%end%>
-</li>
+<br>
+<label>Employees:</label>
+<% @company.employees.each do |employee| %>
+<li><%= employee.name %></li>
+<%end%>
+<br>
+<label>Total Rent:</label>
+<br>
 
 
-<li>
-<% @employees.select do |employee| %>
-<%= employee.company == @company.name %>
-<%end%>
-</li>
+<%=link_to "Add employee", new_employee_path %>
+<% @company.employees.each do |employee| %>
+<h4><%=employee.name%><h4>
+<%= form_with url:"/remove_employee", method: "patch" do |f| %>
+<%= f.hidden_field :employee_id, :value => employee.id %>
+<%= f.hidden_field :company_id, :value => @company.id %>
+<%= f.submit "delete employee"%>
+<% end %>

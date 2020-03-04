@@ -1,8 +1,7 @@
 class Employee < ApplicationRecord
     belongs_to :company
-    belongs_to :building
 
-    validates :name, presence :true
-    validates :title, presence :true
-    validates :company, presence :true
+    validates :name, presence: true, length: {minimum: 5}
+    validates :title, presence: true
+    validates :company, presence: true
 end

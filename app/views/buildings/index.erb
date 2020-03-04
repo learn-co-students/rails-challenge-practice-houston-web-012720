@@ -1,6 +1,4 @@
 <h1>Buildings:</h1>
-<% @building.each do |building| %>
-<li>
-<%= link_to building.name, @building %>
-</li>
+<% @buildings.each do |building| %>
+<li><%= link_to building.name, building_path %></li>
 <% end %>

@@ -1,10 +1,12 @@
 <h1><%=@building.name%></h1>
 <%= @building.number_of_floors_available %>
-<% @building.companies.each do |company| %>
-<li>
-<%= company.name %>
-</li>
+<% @building.offices.each do |office| %>
+<li><%= office.company.name %></li>
 <% end %>
+
+<!-- This code is not correct -->
 <label>Total Rent:</label>
 <%= @building.number_of_floors * @building.rent_per_floor %>
 
+
+<% button_to "Edit", building_edit_path %>
